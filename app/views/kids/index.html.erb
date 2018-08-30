@@ -1,0 +1,12 @@
+<h1>The Kids!</h1>
+
+<div class='kids'>
+  <% @kids.each do |kid| %>
+  <p id="kid-<%= kid.id %>">
+    <%= link_to kid.name, kid_path(kid) %>
+  </p>
+  <% end %>
+</div>
+
+
+<%= link_to "Add a Kiddo", new_kid_path %>
