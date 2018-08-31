@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
 root 'welcome#index'
 
+resources :users, only: [:new]
+
 resources :kids
 
 end
