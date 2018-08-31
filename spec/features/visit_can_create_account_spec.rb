@@ -5,7 +5,7 @@ describe "As a visitor" do
     it 'I should be able to create an account' do
       username = "mommakat"
       visit '/'
-      click_link("Create Account")
+      click_link("Create an Account")
 
       expect(current_path).to eq(new_user_path)
       fill_in :user_usernmae, with: username
