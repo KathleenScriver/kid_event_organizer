@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "As a unauthenticated user" do
+describe "As an unauthenticated user" do
   describe "in order to log in" do
     it "should have login option at '/' " do
       user = User.create(name: "Kat", title: "Mom", username: "mommakat", password: "test")
