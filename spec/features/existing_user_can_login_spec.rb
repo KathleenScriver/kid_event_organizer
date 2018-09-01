@@ -5,7 +5,7 @@ describe "As an unauthenticated user" do
     it "should have login option at '/' " do
       user = User.create(name: "Kat", title: "Mom", username: "mommakat", password: "test")
 
-      visit '/'
+      visit root_path
       click_on("Log In")
 
       expect(current_path).to eq(login_path)
