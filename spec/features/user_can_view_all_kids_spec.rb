@@ -1,11 +1,12 @@
 require "rails_helper"
 
-describe "Authenticated User" do
-  describe "visits kid index page" do
+describe "As an authenticated User" do
+  describe "when I visit kid index page" do
     it 'should show all kids' do
-      kid_1 = Kid.create(name: "Eli")
-      kid_2 = Kid.create(name: "Caleb")
-      kid_3 = Kid.create(name: "Nolan")
+      kid_1, kid_2, kid_3 = create_list(:kid, 3)
+      user = create(:user)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit kids_path
 
