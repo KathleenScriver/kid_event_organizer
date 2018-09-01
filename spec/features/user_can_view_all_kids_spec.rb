@@ -3,8 +3,10 @@ require "rails_helper"
 describe "As an authenticated User" do
   describe "when I visit kid index page" do
     it 'should show all kids' do
-      kid_1, kid_2, kid_3 = create_list(:kid, 3)
+
       user = create(:user)
+      kid_1, kid_2, kid_3 = create_list(:kid, 3)
+
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
