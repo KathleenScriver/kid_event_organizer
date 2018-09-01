@@ -6,7 +6,7 @@ describe "As an unauthenticated user" do
       user = User.create(name: "Kat", title: "Mom", username: "mommakat", password: "test")
 
       visit '/'
-      click_on("Sign In")
+      click_on("Log In")
 
       expect(current_path).to eq(login_path)
       fill_in "username", with: user.username
