@@ -14,7 +14,7 @@ describe "As an authenticated admin" do
       expect(page).to have_content(kid_1.name)
       expect(page).to have_content(kid_2.name)
       expect(page).to have_content(kid_3.name)
-      expect(page).to have_content("Add a kiddo")
+      expect(page).to have_link("Add a Kiddo")
     end
   end
 end

@@ -5,8 +5,9 @@ describe "As an authenticated User" do
     it 'should show all kids' do
 
       user = create(:user)
-      kid_1, kid_2, kid_3 = create_list(:kid, 3)
-
+      kid_1 = user.kids.create(name: "Kid 1")
+      kid_2 = user.kids.create(name: "Kid 2")
+      kid_3 = user.kids.create(name: "Kid 3")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
