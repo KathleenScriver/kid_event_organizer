@@ -20,4 +20,19 @@ describe User, type: :model do
     it {should have_many(:user_kids)}
     it {should have_many(:kids), through: :user_kids}
   end
+
+  describe "roles" do
+    it "can be an admin" do
+      user = create(:admin)
+
+      expect(user.role).to eq("admin")
+      expect(user.admin?).to be_truthy
+    end
+
+    it "can create user as default" do
+      user = create(:user)
+      expect(user.role).to eq("default")
+      expect(user.default?).to be_truthy
+    end
+  end
 end

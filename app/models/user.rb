@@ -5,4 +5,5 @@ class User < ApplicationRecord
   has_many :user_kids
   has_many :kids, through: :user_kids
   has_secure_password
+  enum role: %w(default admin)
 end
