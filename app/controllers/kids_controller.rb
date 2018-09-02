@@ -1,25 +1,11 @@
 class KidsController < ApplicationController
-  before_action :authorize
+  before_action :authorize, only: [:index, :show]
 
   def index
-    @kids = Kid.all
-  end
-
-  def new
-    @kid = Kid.new()
-  end
-
-  def create
-    kid = Kid.create(kid_params)
-    redirect_to kid_path(kid)
+    @kids = current_user.kids
   end
 
   def show
     @kid = Kid.find(params[:id])
   end
-
-  private
-    def kid_params
-      params.require(:kid).permit(:name)
-    end
 end
