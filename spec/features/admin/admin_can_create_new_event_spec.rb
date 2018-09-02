@@ -7,7 +7,7 @@ describe "As an authenticated admin" do
       admin = create(:admin)
       allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin)
 
-      visit kid_path(kid)
+      visit admin_kid_path(kid)
 
       click_on("Add Event")
 
