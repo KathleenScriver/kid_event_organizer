@@ -17,7 +17,7 @@ describe "As an admin" do
 
         new_name = "New Name"
         expect(current_path).to eq(edit_admin_kid_path(kid_1))
-        fill_in :admin_kid_name, with: new_name
+        fill_in :kid_name, with: new_name
         click_on("Update")
 
         expect(current_path).to eq(admin_kid_path(kid_1))
