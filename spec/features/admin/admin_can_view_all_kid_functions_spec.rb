@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "As an authenticated admin" do
   describe "when I visit kids index page" do
-    it 'should show edit, create, delete buttons' do
+    it 'should show create buttons' do
       admin = create(:admin)
       kid_1 = admin.kids.create(name: "Kid 1")
       kid_2 = admin.kids.create(name: "Kid 2")
@@ -14,10 +14,7 @@ describe "As an authenticated admin" do
       expect(page).to have_content(kid_1.name)
       expect(page).to have_content(kid_2.name)
       expect(page).to have_content(kid_3.name)
-      within("#kid-#{kid_1.id}") do
-        expect(page).to have_link("Edit")
-        expect(page).to have_link("Delete")
-      end
+      expect(page).to have_content("Add a kiddo")
     end
   end
 end

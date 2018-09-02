@@ -10,10 +10,9 @@ describe "As an admin" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit admin_kid_path(kid)
-    click_on("Delete")
-    expect(page).to have_content("Are you sure you want to delete #{name}?")
-    click_on "Yes"
 
+    click_on("Delete")
+    
     expect(current_path).to eq(admin_kids_path)
     expect(page).to have_content("#{name} was successfully deleted.")
     within(".kids") do

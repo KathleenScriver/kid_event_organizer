@@ -1,5 +1,5 @@
 class Admin::KidsController < ApplicationController
-  before_action :set_kid, only: [:show, :edit, :update]
+  before_action :set_kid, only: [:show, :edit, :update, :destroy]
   def index
     @kids = Kid.all
   end
@@ -32,6 +32,12 @@ class Admin::KidsController < ApplicationController
       flash.alert = "Updates not saved."
     end
     redirect_to admin_kid_path(@kid)
+  end
+
+  def destroy
+    @kid.destroy
+    flash.notice = "#{@kid.name} was successfully deleted."
+    redirect_to admin_kids_path
   end
 
   private
