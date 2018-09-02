@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
 
-  resources :kids, only: [:show, :index] 
+  resources :kids, only: [:show, :index]
+
+  resources :events, only: [:edit, :update, :new, :create, :destroy]
 
 end
