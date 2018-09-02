@@ -1,0 +1,15 @@
+<h1>The Kids!</h1>
+
+<div class='kids'>
+  <% @kids.each do |kid| %>
+  <div id="kid-<%= kid.id %>">
+    <p><%= link_to kid.name, kid_path(kid) %></p>
+    <p><%= link_to "Edit Kid", edit_admin_kid_path(kid) %></p>
+    <p><%= link_to "Delete Kid", admin_kid_path(kid), method: :destroy,
+        data: {confirm: "Are you sure you want to delete #{kid.name}?"} %></p>
+  </div>
+  <% end %>
+</div>
+
+
+<%= link_to "Add a Kiddo", new_admin_kid_path %>
