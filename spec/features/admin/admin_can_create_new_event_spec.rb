@@ -3,13 +3,10 @@ require "rails_helper"
 describe "As an authenticated admin" do
   describe "when I visit kids show page" do
     it 'should show all events' do
-      event_1, event_2, event_3 = create_list(:event, 3)
+      event_1 = create(:event)
       admin = create(:admin)
-      kid = create(:kid)
+      kid = event_1.kid
       admin.kids << kid
-      kid.events << event_1
-      kid.events << event_2
-      kid.events << event_3
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit admin_kid_path(kid)
@@ -53,6 +50,37 @@ describe "As an authenticated admin" do
       expect(page).to have_content(descrip)
       expect(page).to have_content(location)
       expect(page).to have_content(time)
+    end
+
+    it 'should edit and delete events' do
+      event = create(:event)
+      kid = event.kid
+      admin = create(:admin)
+      admin.kids << kid
+      old_location = event.location
+      new_location = "Thornton"
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_kid_path(kid)
+
+      expect(page).to have_content(event.location)
+      within("#event-#{event.id}") do
+        click_on("Edit")
+      end
+
+      expect(current_path).to eq(edit_admin_event(event))
+      fill_in :event_location, with: new_location
+      click_on("Update Event")
+
+      expect(current_path).to eq(admin_kid_path(kid))
+      expect(page).to have_content("Location: #{new_location}")
+      expect(page).to_not have_content("Location: #{old_location}")
+
+      within("#event-#{event.id}") do
+        click_on("Delete")
+      end
+
+      expect(page).to_not have_content(event.title)
     end
   end
 end
