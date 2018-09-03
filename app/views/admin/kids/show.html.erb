@@ -9,7 +9,7 @@
   <h6><%= event.title %></h6>
   <p>Location: <%= event.location %></p>
   <p>Day: <%= event.day_of_week %></p>
-  <p>Time: <%= event.time.strftime("%l:%M %P") %></p>
+  <p>Time: <%= event.time.in_time_zone("MST").strftime("%l:%M %P") %></p>
   <p>Notes: <%= event.description %></p>
   <p><%= link_to "Edit", edit_admin_event_path(event) %></p>
   <p><%= link_to "Delete", admin_event_path(event), method: :delete,

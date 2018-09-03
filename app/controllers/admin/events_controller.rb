@@ -6,7 +6,7 @@ class Admin::EventsController < ApplicationController
 
   def create
     @kid = Kid.find(params[:kid_id])
-    @event = Event.new(event_params)
+    @event = @kid.events.new(event_params)
     if @event.save
       flash.notice = "Your event was saved!"
       redirect_to admin_kid_path(@kid)
@@ -18,6 +18,7 @@ class Admin::EventsController < ApplicationController
 
   private
     def event_params
+      params[:event][:time] = Time.parse(params[:event][:time])
       params.require(:event).permit(:title, :location, :day_of_week, :time, :description)
     end
 end

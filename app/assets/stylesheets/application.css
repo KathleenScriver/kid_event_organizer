@@ -16,8 +16,12 @@
 
 form {
   border: 3px solid skyblue;
-  margin 30px;
+  margin: 20px 100px;
   background-color: lightgrey;
-  padding: 20px;
+  padding: 30px 20px;
+}
+
+form div {
   text-align: justify;
+  padding: 9px;
 }
