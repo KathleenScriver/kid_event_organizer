@@ -68,7 +68,7 @@ describe "As an authenticated admin" do
         click_on("Edit")
       end
 
-      expect(current_path).to eq(edit_admin_event(event))
+      expect(current_path).to eq(edit_admin_kid_event_path(kid, event))
       fill_in :event_location, with: new_location
       click_on("Update Event")
 
