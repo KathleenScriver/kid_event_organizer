@@ -1,5 +1,5 @@
 class KidsController < ApplicationController
-  before_action :authorize, only: [:index, :show]
+  before_action :authorize
 
   def index
     @kids = current_user.kids

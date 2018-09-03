@@ -1,5 +1,7 @@
 class Admin::KidsController < ApplicationController
   before_action :set_kid, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
+
   def index
     @kids = Kid.all
   end
