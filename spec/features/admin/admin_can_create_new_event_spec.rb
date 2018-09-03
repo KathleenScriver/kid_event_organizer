@@ -37,15 +37,15 @@ describe "As an authenticated admin" do
       descrip = "Play Soccer"
       location = "Westminster Rec Center"
       day = "Monday"
-      time = "9:15 am"
+      time = "9:00AM"
 
       expect(current_path).to eq(new_admin_kid_event_path(kid))
       fill_in :event_title, with: new_event_title
       fill_in :event_description, with: descrip
       fill_in :event_location, with: location
-      fill_in :event_day_of_week, with: day
-
-      fill_in :time, with: time
+      select day, from: :event_day_of_week
+      fill_in :event_time, with: "17:45"
+      # fill_in "05:30 PM", from: :event_time
       click_on("Create Event")
 
       expect(current_path).to eq(admin_kid_path(kid))

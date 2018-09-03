@@ -11,9 +11,9 @@
   <p>Day: <%= event.day_of_week %></p>
   <p>Time: <%= event.time.strftime("%l:%M %P") %></p>
   <p>Notes: <%= event.description %></p>
-  <p><%= link_to "Edit", edit_event_path(event) %></p>
-  <p><%= link_to "Delete", event_path(event), method: :delete,
+  <p><%= link_to "Edit", edit_admin_event_path(event) %></p>
+  <p><%= link_to "Delete", admin_event_path(event), method: :delete,
         data: {confirm: "Are you sure you want to delete #{event.title}?"} %></p>
 <% end %>
 
-<p><%= link_to "Add New Event", new_event_path %>
+<p><%= link_to "Add New Event", new_admin_kid_event_path(@kid) %>
