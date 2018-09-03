@@ -3,3 +3,19 @@
 <p><%= link_to "Edit", edit_admin_kid_path(@kid) %></p>
 <p><%= link_to "Delete Kid", admin_kid_path(@kid), method: :delete,
     data: {confirm: "Are you sure you want to delete #{@kid.name}?"} %></p>
+
+<h3>Events</h3>
+<% @kid.events.each do |event| %>
+  <div id="event-<%= event.id %>">
+  <h6><%= event.title %></h6>
+  <p>Location: <%= event.location %></p>
+  <p>Day: <%= event.day_of_week %></p>
+  <p>Time: <%= event.time.in_time_zone("MST").strftime("%l:%M %P") %></p>
+  <p>Notes: <%= event.description %></p>
+  <p><%= link_to "Edit", edit_admin_kid_event_path(@kid, event) %></p>
+  <p><%= link_to "Delete", admin_kid_event_path(@kid, event), method: :delete,
+        data: {confirm: "Are you sure you want to delete #{event.title}?"} %></p>
+  </div>
+<% end %>
+
+<p><%= link_to "Add New Event", new_admin_kid_event_path(@kid) %></p>

@@ -1,0 +1,28 @@
+<form>
+    <%= form_for [:admin, @kid, @event] do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form-group">
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Day" %>
+      <%= f.select :day_of_week, [("Monday"), ("Tuesday"), ("Wednesday"),
+        ("Thursday"), ("Friday"), ("Saturday"), ("Sunday")] %>
+    </div>
+    <div class="form-group">
+      <%= f.label :time %>
+      <%= f.time_field :time %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Additional Notes: " %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="form-group">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</form>
