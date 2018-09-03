@@ -22,6 +22,7 @@ class Admin::EventsController < ApplicationController
 
   def update
     @event = @kid.events.find(params[:id])
+    @event.update(event_params)
     if @event.update(event_params)
       flash.notice = "Your event has been updated."
       redirect_to admin_kid_path(@kid)
@@ -39,7 +40,7 @@ class Admin::EventsController < ApplicationController
 
   private
     def event_params
-      params[:event][:time] = Time.parse(params[:event][:time])
+      params[:event][:time] = Time.parse((params[:event][:time]).to_s)
       params.require(:event).permit(:title, :location, :day_of_week, :time, :description)
     end
 

@@ -4,6 +4,10 @@
   <% @kids.each do |kid| %>
   <div id="kid-<%= kid.id %>">
     <p><%= link_to kid.name, admin_kid_path(kid) %></p>
+    <p><% kid.events.each do |event| %></p>
+        <%= event.title %>
+        <%= event.day_of_week %>
+      <% end %>
   </div>
   <% end %>
 </div>
