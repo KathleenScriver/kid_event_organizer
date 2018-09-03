@@ -1,12 +1,12 @@
 class Admin::EventsController < ApplicationController
-  before_action :set_kid, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_kid
 
   def new
     @event = Event.new()
   end
 
   def create
-    @event = @kid.events.new(event_params)
+    @event = @kid.events.create(event_params)
     if @event.save
       flash.notice = "Your event was saved!"
       redirect_to admin_kid_path(@kid)
