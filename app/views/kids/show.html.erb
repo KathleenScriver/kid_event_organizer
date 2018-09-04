@@ -1,1 +1,14 @@
 <h1><%= @kid.name %></h1>
+
+<h3>Events</h3>
+<% @kid.events.each do |event| %>
+  <div id="event-<%= event.id %>">
+  <h6><%= event.title %></h6>
+  <p>Location: <%= event.location %></p>
+  <p>Day: <%= event.day_of_week %></p>
+  <p>Time: <%= event.time.in_time_zone("MST").strftime("%l:%M %P") %></p>
+  <p>Notes: <%= event.description %></p>
+  </div>
+<% end %>
+
+<%= link_to "Back to All Kiddos", kids_path, class: 'btn btn-grey' %>
