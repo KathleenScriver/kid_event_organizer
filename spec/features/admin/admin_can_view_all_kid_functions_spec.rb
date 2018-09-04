@@ -28,4 +28,17 @@ describe "As an authenticated admin" do
       expect(page).to have_link("Add a Kiddo")
     end
   end
+
+  describe "as a deafult user" do
+    it 'should not allow access to admin page' do
+      user = create(:user)
+      kid = create(:kid)
+      user.kids << kid
+
+      visit admin_kids_path
+
+      expect(page).to_not have_content(kid.name)
+      expect(page).to have_content("The page you were looking for doesn't exist.")
+    end
+  end
 end
