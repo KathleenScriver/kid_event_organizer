@@ -6,14 +6,12 @@ describe "As an authorized user" do
       user = create(:user)
       kid = create(:kid)
       user.kids << kid
-      event_1, event_2 = create_list(:event, 2)
-      kid.events << event_1
-      kid.events << event_2
+      event_1, event_2 = create_list(:event, 2, kid: kid)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit kids_path
       click_on(kid.name)
-save_and_open_page
+
       expect(current_path).to eq(kid_path(kid))
       expect(page).to have_content(kid.name)
 
