@@ -3,17 +3,17 @@ require "rails_helper"
 describe "As an authenticated admin" do
   describe "when I visit kids show page" do
     it 'should show all events' do
-      event_1 = create(:event)
+      kid = create(:kid)
+      event_1, event_2, event_3 = create_list(:event, 3, kid: kid)
       admin = create(:admin)
-      kid = event_1.kid
       admin.kids << kid
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit admin_kid_path(kid)
 
       expect(page).to have_content(event_1.title)
-      # expect(page).to have_content(event_2.title)
-      # expect(page).to have_content(event_3.title)
+      expect(page).to have_content(event_2.title)
+      expect(page).to have_content(event_3.title)
       expect(page).to have_link("Edit")
       expect(page).to have_link("Delete")
       expect(page).to have_link("Add New Event")
