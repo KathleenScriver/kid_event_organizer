@@ -1,6 +1,5 @@
-class Admin::EventsController < ApplicationController
+class Admin::EventsController < Admin::BaseController
   before_action :set_kid
-  before_action :authorize
 
   def new
     @event = Event.new()
