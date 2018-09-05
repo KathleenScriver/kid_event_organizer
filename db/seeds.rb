@@ -7,7 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 users = User.create([{name: "Kat", title: "Mom", username: "mommakat", password: "test", role: 1},
-  {name: "Sue Ann", title: "grandma", username: "gmasue", password: "test", role: 0}])
+  {name: "Sue Ann", title: "grandma", username: "gmasue", password: "test", role: 0},
+  {name: "Anthony", title: "Step-dad", username: "anthony", password: "test", role: 0}])
 
 kids = Kid.create([{name: "Eli"}, {name: "Caleb"}, {name: "Nolan"}])
 
@@ -17,6 +18,9 @@ users.first.kids << kids.third
 users.second.kids << kids.first
 users.second.kids << kids.second
 users.second.kids << kids.third
+users.last.kids << kids.first
+users.last.kids << kids.second
+users.last.kids << kids.third
 
 Event.create(title: "Soccer", location: "Westminster Rec Center", day_of_week: "Wednesday", time: "5:45 pm", description: "Bring Water", kid: kids.first)
 Event.create(title: "Soccer", location: "Westminster Rec Center", day_of_week: "Wednesday", time: "5:45 pm", description: "Bring Cleats", kid: kids.second)
