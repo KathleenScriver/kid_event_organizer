@@ -73,8 +73,11 @@ describe "As an authenticated admin" do
       click_on("Update Event")
 
       expect(current_path).to eq(admin_kid_path(kid))
-      expect(page).to have_content("Location: #{new_location}")
-      expect(page).to_not have_content("Location: #{old_location}")
+
+      within("#event-#{Event.last.id}") do
+        expect(page).to have_content("#{new_location}")
+        expect(page).to_not have_content("#{old_location}")
+      end
 
       within("#event-#{event.id}") do
         click_on("Delete")

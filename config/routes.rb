@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :user_kids, only: [:destroy]
+  end
+
   resources :users, only: [:new, :create, :show]
 
   resources :kids, only: [:show, :index]
