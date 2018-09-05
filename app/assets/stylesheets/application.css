@@ -15,10 +15,11 @@
  */
 body {
   margin: 10px;
+  background-color: #B7C5E2;
 }
+
 form {
   border: 3px solid skyblue;
-  margin: 20px 100px;
   background-color: lightgrey;
   padding: 30px 20px;
 }
@@ -28,8 +29,39 @@ form div {
   padding: 9px;
 }
 
+.welcome {
+  text-align: center;
+  padding: 30px;
+  margin: 30px;
+}
+
+.welcome h1 {
+  font-size: 80px;
+  padding: 20px;
+}
+
+.welcome h2 {
+  font-size: 60px;
+  padding: 0px 0px 30px 0px;
+}
+
 .btn {
   margin: 10px;
+}
+
+.list {
+  background-color: lightgrey;
+  display: inline-flex;
+  text-align: center;
+  padding: 10px;
+}
+
+.sub-list {
+  margin: 20px;
+}
+
+.list p {
+  display: inline-block;
 }
 
 .title {
@@ -38,17 +70,17 @@ form div {
 }
 
 .kid-header {
-  margin: 20px 5px;
+  margin: 40px 5px;
   padding: 10px;
+  display: inline-flex;
+  float: center;
+
 }
 
-.kid-header ul {
-  display: inline;
-  margin: 10px 2px;
-  padding: 5px;
-  text-align: left;
+.kid-header h1 {
+  font-size: 50px;
 }
 
-.kid-header ul li {
+.kid-header li {
   display: inline-block;
 }
