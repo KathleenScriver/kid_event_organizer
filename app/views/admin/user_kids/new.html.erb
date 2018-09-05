@@ -1,0 +1,8 @@
+<h2>Link a new user to view <%= @kid.name %>'s Events</h2>
+
+<%= form_for [:admin, @user_kid] do |f| %>
+  <%= f.label :user %>
+  <%= f.collection_select(:user_id, @users, :id, :name) %>
+  <%= f.hidden_field(:kid_id, :value => @kid.id) %>
+  <%= f.submit "Link" %>
+<% end %>
