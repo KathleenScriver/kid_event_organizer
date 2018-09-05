@@ -1,9 +1,27 @@
-<h1>The Kids!</h1>
+<h1>The Kids</h1>
 
 <div class='kids'>
   <% @kids.each do |kid| %>
-  <p id="kid-<%= kid.id %>">
-    <%= link_to kid.name, kid_path(kid) %>
-  </p>
+  <div id="kid-<%= kid.id %>">
+    <h3><%= link_to kid.name, kid_path(kid) %></h3>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Event</th>
+            <th scope="col">Day</th>
+          </tr>
+        </thead>
+        <% kid.events.each do |event| %>
+          <tbody>
+            <tr>
+              <td><%= event.title %></td>
+              <td><%= event.day_of_week %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
   <% end %>
 </div>

@@ -1,21 +1,47 @@
-<h1><%= @kid.name %></h1>
+<div class='kid-header'>
+  <h1><%= @kid.name %></h1>
 
-<p><%= link_to "Edit", edit_admin_kid_path(@kid) %></p>
-<p><%= link_to "Delete Kid", admin_kid_path(@kid), method: :delete,
-    data: {confirm: "Are you sure you want to delete #{@kid.name}?"} %></p>
+  <ul type="none">
+    <li><%= link_to "Edit", edit_admin_kid_path(@kid), class: 'btn btn-info btn-sm' %></li>
+    <li><%= link_to "Delete", admin_kid_path(@kid), method: :delete,
+        data: {confirm: "Are you sure you want to delete #{@kid.name}?"},
+        class: 'btn btn-danger btn-sm' %></li>
+  </ul>
+</div>
 
 <h3>Events</h3>
-<% @kid.events.each do |event| %>
-  <div id="event-<%= event.id %>">
-  <h6><%= event.title %></h6>
-  <p>Location: <%= event.location %></p>
-  <p>Day: <%= event.day_of_week %></p>
-  <p>Time: <%= event.time.in_time_zone("MST").strftime("%l:%M %P") %></p>
-  <p>Notes: <%= event.description %></p>
-  <p><%= link_to "Edit", edit_admin_kid_event_path(@kid, event) %></p>
-  <p><%= link_to "Delete", admin_kid_event_path(@kid, event), method: :delete,
-        data: {confirm: "Are you sure you want to delete #{event.title}?"} %></p>
-  </div>
-<% end %>
 
-<p><%= link_to "Add New Event", new_admin_kid_event_path(@kid) %></p>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope='col'></th>
+        <th scope='col'>Location</th>
+        <th scope='col'>Day</th>
+        <th scope='col'>Time</th>
+        <th scope='col'>Notes</th>
+        <th scope='col'></th>
+        <th scope='col'></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @kid.events.each do |event| %>
+      <div id="event-<%= event.id %>">
+        <tr>
+          <td class="title"><%= event.title %></td>
+          <td><%= event.location %></td>
+          <td><%= event.day_of_week %></td>
+          <td><%= event.time.in_time_zone("MST").strftime("%l:%M %P") %></td>
+          <td><%= event.description %></td>
+          <td><%= link_to "Edit", edit_admin_kid_event_path(@kid, event) %></td>
+          <td><%= link_to "Delete", admin_kid_event_path(@kid, event), method: :delete,
+                data: {confirm: "Are you sure you want to delete #{event.title}?"} %></td>
+        </tr>
+      </div>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<p><%= link_to "Add New Event", new_admin_kid_event_path(@kid), class: 'btn btn-primary' %></p>
+<p><%= link_to "Back to All Kiddos", admin_kids_path, class: 'btn btn-info' %>

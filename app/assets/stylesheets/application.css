@@ -25,3 +25,28 @@ form div {
   text-align: justify;
   padding: 9px;
 }
+
+.btn {
+  margin: 10px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.kid-header {
+  margin: 20px 5px;
+  padding: 10px;
+}
+
+.kid-header ul {
+  display: inline;
+  margin: 10px 2px;
+  padding: 5px;
+  text-align: left;
+}
+
+.kid-header ul li {
+  display: inline-block;
+}
