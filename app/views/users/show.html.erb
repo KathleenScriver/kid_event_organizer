@@ -1,7 +1,3 @@
 <h1>Welcome, <%= current_user.name %>! (<%= current_user.title.capitalize %>)</h1>
 
-<% if current_user.admin? %>
-  <p><%= link_to "See My Kiddos", admin_kids_path(current_user), class: 'btn btn-info' %>
-<% else %>
-  <p><%= link_to "See My Kiddos", kids_path(current_user), class: 'btn btn-info' %>
-<% end %>
+  <p><%= link_to "See My Kiddos", kids_path, class: 'btn btn-info' %>
