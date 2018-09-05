@@ -26,7 +26,7 @@ describe "As an authorized user" do
       visit kids_path
       click_on("Week View")
 
-      expect(current_path).to eq(kids_path)
+      expect(current_path).to eq(events_path)
       within("#Tuesday") do
         expect(page).to have_content(event_1.title)
         expect(page).to have_content(event_5.title)
@@ -38,16 +38,7 @@ describe "As an authorized user" do
       end
 
       click_on("Kid View")
-      within("kid-#{kid_1.id}") do
-        expect(page).to have_content(event_1.title)
-        expect(page).to have_content(event_1.day_of_week)
-        expect(page).to have_content(event_2.title)
-        expect(page).to have_content(event_2.day_of_week)
-        expect(page).to have_content(event_3.title)
-        expect(page).to have_content(event_3.day_of_week)
-        expect(page).to have_content(event_4.title)
-        expect(page).to have_content(event_4.day_of_week)
-      end
+      expect(current_path).to eq(kids_path)
     end
   end
 end

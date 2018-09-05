@@ -1,5 +1,8 @@
 <h1>The Kids</h1>
 
+<%= link_to "Kid View", kids_path, class: 'btn' %>
+<%= link_to "Week View", events_path, class: 'btn' %>
+
 <div class='kids'>
   <% @kids.each do |kid| %>
   <div id="kid-<%= kid.id %>">

@@ -32,15 +32,15 @@ describe Event, type: :model do
       event_9 = create(:event, kid: kid_3, title: "Swimming", day_of_week: "Sunday")
       event_10 = create(:event, kid: kid_3, title: "Toddler Class", day_of_week: "Thursday")
 
-      sorted_hash = {Monday: [event_1],
-                     Tuesday: [event_2, event_5],
-                     Wednesday: [event_6],
-                     Thursday: [event_10],
-                     Friday: [event_7],
-                     Saturday: [event_4, event_8],
-                     Sunday: [event_3, event_9]}
+      sorted_array= [[event_1],
+                    [event_2, event_5],
+                    [event_6],
+                     [event_10],
+                     [event_7],
+                     [event_4, event_8],
+                     [event_3, event_9]]
 
-      expect(Event.sort_by_day).to eq(sorted_hash)
+      expect(Event.sort_by_day).to eq(sorted_array)
     end
   end
 end

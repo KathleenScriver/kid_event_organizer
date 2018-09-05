@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :events, only: [:index]
+
   namespace :admin do
     resources :user_kids, only: [:destroy]
   end
