@@ -14,10 +14,9 @@ describe "As an admin" do
 
       click_on("Add a User")
 
-      expect(current_path).to eq(new_admin_user_kid_path(kid))
-      select(user, from: :user_name)
+      expect(current_path).to eq(new_admin_user_kid_path)
+      find('#user_kid_user_id').find(:option, user.name).select_option
       click_on("Link")
-
       expect(current_path).to eq(admin_kid_path(kid))
 
       within(".list") do
