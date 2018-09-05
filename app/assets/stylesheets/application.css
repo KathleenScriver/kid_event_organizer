@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
+body {
+  margin: 10px;
+}
 form {
   border: 3px solid skyblue;
   margin: 20px 100px;

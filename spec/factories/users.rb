@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :user do
-    name {"SUe Ann"}
+    sequence(:name) { |n| "User #{n}" }
     title {"Grandma"}
-    username {"gmaSue55"}
+    sequence(:username) { |n| "Username#{n}" }
     password {"test"}
     role { 0 }
   end
