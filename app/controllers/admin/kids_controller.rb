@@ -1,16 +1,12 @@
 class Admin::KidsController < Admin::BaseController
   before_action :set_kid, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @kids = Kid.all
-  end
-
   def new
     @kid = Kid.new()
   end
 
   def create
-    kid = Kid.create(kid_params)
+    kid = current_user.kids.create(kid_params)
     if kid.save
       flash.notice = "#{kid.name} was successfully created!"
       redirect_to admin_kid_path(kid)
@@ -36,9 +32,14 @@ class Admin::KidsController < Admin::BaseController
   end
 
   def destroy
+    user_kids = UserKid.where(kid_id: @kid.id)
+    user_kids.each do |user_kid|
+      user_kid.destroy
+    end
     @kid.destroy
+    current_user.kids.destroy(@kid)
     flash.notice = "#{@kid.name} was successfully deleted."
-    redirect_to admin_kids_path
+    redirect_to kids_path
   end
 
   private

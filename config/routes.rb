@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   namespace :admin do
-    resources :kids do
+    resources :kids, except: [:index] do
       resources :events, except: [:index, :show]
     end
   end

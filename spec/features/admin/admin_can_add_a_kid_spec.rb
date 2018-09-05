@@ -7,7 +7,7 @@ describe "Admin can add a new kid" do
 
     name = "Eli"
 
-    visit admin_kids_path
+    visit kids_path
 
     click_on("Add a Kid")
 

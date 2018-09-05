@@ -9,7 +9,8 @@ describe "As an admin" do
         kid_1 = admin.kids.create(name: old_name)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-        visit admin_kids_path
+        visit kids_path
+
         click_on(kid_1.name)
 
         expect(current_path).to eq(admin_kid_path(kid_1))

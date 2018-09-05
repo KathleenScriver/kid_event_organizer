@@ -12,8 +12,8 @@ describe "As an admin" do
     visit admin_kid_path(kid)
 
     click_on("Delete")
-    
-    expect(current_path).to eq(admin_kids_path)
+
+    expect(current_path).to eq(kids_path)
     expect(page).to have_content("#{name} was successfully deleted.")
     within(".kids") do
       expect(page).to_not have_content(name)
