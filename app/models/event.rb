@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   validates_presence_of :title, :location, :day_of_week, :time
   belongs_to :kid
 
-  def self.sort_by_day
+  def self.sorted_days
     mon = Event.where(day_of_week: "Monday")
     tues = Event.where(day_of_week: "Tuesday")
     wed = Event.where(day_of_week: "Wednesday")

@@ -28,7 +28,7 @@ describe "As an authorized user" do
 
       expect(current_path).to eq(events_path)
       within("#Tuesday") do
-        expect(page).to have_content(event_1.title)
+        expect(page).to have_content(event_2.title)
         expect(page).to have_content(event_5.title)
       end
 

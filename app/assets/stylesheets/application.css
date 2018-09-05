@@ -29,6 +29,10 @@ form div {
   padding: 9px;
 }
 
+.table {
+  background-color: #E8EBF7;
+}
+
 .welcome {
   text-align: center;
   padding: 30px;
@@ -74,7 +78,6 @@ form div {
   padding: 10px;
   display: inline-flex;
   float: center;
-
 }
 
 .kid-header h1 {
@@ -82,5 +85,10 @@ form div {
 }
 
 .kid-header li {
+  display: inline-block;
+}
+
+.th-light {
+  background-color: #F1FFE7;
   display: inline-block;
 }
