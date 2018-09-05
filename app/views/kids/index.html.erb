@@ -4,6 +4,7 @@
   <% @kids.each do |kid| %>
   <div id="kid-<%= kid.id %>">
     <h3><%= link_to kid.name, kid_path(kid) %></h3>
+    <h5># of Events:   <%= kid.events.count %></h5>
     <div class="table-responsive">
       <table class="table">
         <thead>

@@ -1,14 +1,38 @@
-<h1><%= @kid.name %></h1>
+<div class='kid-header'>
+  <h1><%= @kid.name %></h1>
+</div>
 
 <h3>Events</h3>
-<% @kid.events.each do |event| %>
-  <div id="event-<%= event.id %>">
-  <h6><%= event.title %></h6>
-  <p>Location: <%= event.location %></p>
-  <p>Day: <%= event.day_of_week %></p>
-  <p>Time: <%= event.time.in_time_zone("MST").strftime("%l:%M %P") %></p>
-  <p>Notes: <%= event.description %></p>
-  </div>
-<% end %>
 
-<%= link_to "Back to All Kiddos", kids_path, class: 'btn btn-grey' %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope='col'></th>
+        <th scope='col'>Location</th>
+        <th scope='col'>Day</th>
+        <th scope='col'>Time</th>
+        <th scope='col'>Notes</th>
+        <th scope='col'></th>
+        <th scope='col'></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @kid.events.each do |event| %>
+      <div id="event-<%= event.id %>">
+        <tr>
+          <td class="title"><%= event.title %></td>
+          <td><%= event.location %></td>
+          <td><%= event.day_of_week %></td>
+          <td><%= event.time.in_time_zone("MST").strftime("%l:%M %P") %></td>
+          <td><%= event.description %></td>
+        </tr>
+      </div>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<div class='kid-header'>
+  <p><%= link_to "Back to All Kiddos", kids_path, class: 'btn btn-info' %>
+</div>
