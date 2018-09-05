@@ -12,7 +12,7 @@ describe "As an authenticated admin" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin)
 
-      visit admin_kids_path
+      visit kids_path
 
       within("#kid-#{kid_1.id}") do
         expect(page).to have_content(kid_1.name)
@@ -35,7 +35,7 @@ describe "As an authenticated admin" do
       kid = create(:kid)
       user.kids << kid
 
-      visit admin_kids_path
+      visit admin_kid_path(kid)
 
       expect(page).to_not have_content(kid.name)
       expect(page).to have_content("The page you were looking for doesn't exist.")

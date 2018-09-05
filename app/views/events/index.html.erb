@@ -1,0 +1,28 @@
+<h1>Events</h1>
+
+<%= link_to "Kid View", kids_path, class: 'btn' %>
+<%= link_to "Week View", kids_path(sort: "week"), class: 'btn' %>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th scope="col">Day</th>
+        <th scope="col">Event</th>
+        <th scope="col">Kid</th>
+      </tr>
+    </thead>
+  <% @sorted_events.each do |events| %>
+    <% unless events == [] %>
+    <tbody id="<%= events.first.day_of_week %>">
+    <th class='th-light'><%= events.first.day_of_week %></th>
+      <% events.each do |event| %>
+        <tr>
+          <td></td>
+          <td><%= event.title %></td>
+          <td><%= event.kid.name %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

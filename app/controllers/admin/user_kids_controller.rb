@@ -4,7 +4,7 @@ class Admin::UserKidsController < Admin::BaseController
     user = User.find(params[:user_id])
     user_kid = UserKid.find_by(user_id: user.id, kid_id: kid.id)
     if user_kid.delete
-     flash.notice = "User removed."
+     flash.notice = "User removed from this kid."
     else
      flash.alert = "Could not remove user, please try again."
     end

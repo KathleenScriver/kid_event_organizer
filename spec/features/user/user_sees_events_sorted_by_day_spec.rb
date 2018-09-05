@@ -1,19 +1,8 @@
 require "rails_helper"
 
-describe Event, type: :model do
-  describe "validations" do
-    it {should validate_presence_of(:title)}
-    it {should validate_presence_of(:location)}
-    it {should validate_presence_of(:day_of_week)}
-    it {should validate_presence_of(:time)}
-  end
-
-  describe "relationships" do
-    it {should belong_to(:kid)}
-  end
-
-  describe 'class methods' do
-    it ".sorted_days" do
+describe "As an authorized user" do
+  describe "when I visit the kids index page" do
+    it 'should have a link to sort events by the day' do
       user = create(:user)
       kid_1 = create(:kid)
       kid_2 = create(:kid)
@@ -27,20 +16,29 @@ describe Event, type: :model do
       event_4 = create(:event, kid: kid_1, title: "Gym Class", day_of_week: "Saturday")
       event_5 = create(:event, kid: kid_2, title: "Soccer", day_of_week: "Tuesday")
       event_6 = create(:event, kid: kid_2, title: "Swimming", day_of_week: "Wednesday")
-      event_7 = create(:event, kid: kid_2, title: "Date with Grandma", day_of_week: "Saturday")
+      event_7 = create(:event, kid: kid_2, title: "Date with Grandma", day_of_week: "Friday")
       event_8 = create(:event, kid: kid_3, title: "Soccer", day_of_week: "Saturday")
       event_9 = create(:event, kid: kid_3, title: "Swimming", day_of_week: "Sunday")
       event_10 = create(:event, kid: kid_3, title: "Toddler Class", day_of_week: "Thursday")
 
-      sorted_array= [[event_1],
-                    [event_2, event_5],
-                    [event_6],
-                     [event_10],
-                     [],
-                     [event_4, event_7, event_8],
-                     [event_3, event_9]]
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      expect(Event.sorted_days).to eq(sorted_array)
+      visit kids_path
+      click_on("Week View")
+
+      expect(current_path).to eq(events_path)
+      within("#Tuesday") do
+        expect(page).to have_content(event_2.title)
+        expect(page).to have_content(event_5.title)
+      end
+
+      within("#Saturday") do
+        expect(page).to have_content(event_4.title)
+        expect(page).to have_content(event_8.title)
+      end
+
+      click_on("Kid View")
+      expect(current_path).to eq(kids_path)
     end
   end
 end

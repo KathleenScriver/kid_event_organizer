@@ -9,7 +9,11 @@
   </ul>
 </div>
 
+<div class='event-header'>
 <h3>Events</h3>
+  <p><%= link_to "Add New Event", new_admin_kid_event_path(@kid), class: 'btn btn-primary btn-sm' %></p>
+  <p><%= link_to "Back to All Kiddos", kids_path, class: 'btn btn-info btn-sm' %>
+</div>
 
 <div class="table-responsive">
   <table class="table">
@@ -41,11 +45,6 @@
     <% end %>
   </tbody>
 </table>
-</div>
-
-<div class='kid-header'>
-  <p><%= link_to "Add New Event", new_admin_kid_event_path(@kid), class: 'btn btn-primary' %></p>
-  <p><%= link_to "Back to All Kiddos", admin_kids_path, class: 'btn btn-info' %>
 </div>
 
 <div class='list'>
