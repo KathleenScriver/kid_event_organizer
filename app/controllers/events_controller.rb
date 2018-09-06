@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :authorize
 
   def index
-    @sorted_events = Event.sorted_days
+    kid_ids = current_user.event_scope
+    @sorted_events = Events.sorted_events(kid_ids)
   end
 end
