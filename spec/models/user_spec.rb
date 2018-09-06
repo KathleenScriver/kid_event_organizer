@@ -31,9 +31,22 @@ describe User, type: :model do
 
     it "can create user as default" do
       user = create(:user)
-      
+
       expect(user.role).to eq("default")
       expect(user.default?).to be_truthy
+    end
+  end
+
+  describe 'instance methods' do
+    it '.event_scope' do
+      user = create(:user)
+      kid_1, kid_2 = create_list(:kid, 2)
+      user.kids << kid_1
+      user.kids << kid_2
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      expect(user.event_scope).to eq([kid_1.id, kid_2.id])
     end
   end
 end
